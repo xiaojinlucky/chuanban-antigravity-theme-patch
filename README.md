@@ -1,4 +1,12 @@
-# 船板的 Antigravity 主题、字体与汉化补丁 (v6.0.0)
+# 船板的 Antigravity 主题、字体与汉化补丁 (v6.0.0 · 中文自动命名 & 额度展示衍生版)
+
+> [!NOTE]
+> 本仓库是基于上游 **[Anarcadia/chuanban-antigravity-theme-patch](https://github.com/Anarcadia/chuanban-antigravity-theme-patch)**（MIT 协议）的衍生 Fork，遵守上游轻量化内核约定，仅通过 `user/` 扩展层与 `auto-update.mjs` 最小桥接追加两项社区扩展能力：
+> 1. **侧边栏对话自动中文+日期命名（`zhTitle`）**：事件驱动调用用户自备的 OpenAI / Anthropic 兼容接口，将英文对话标题规范化为 `MM-DD 模块｜事项`（本地缓存于 `user/titles.json`，可选写回原生 `.pbtxt`）；
+> 2. **实时胶囊 & 悬浮卡 5h / 周额度显示**：配合上游 `v6.0.0` 圆环精简胶囊，在底栏与悬浮卡片内增补当前模型池（`Gemini` / `Claude`）的 **5 小时与每周剩余额度**及重置倒计时（可选只读读取本机 `~/.cockpit_tools/platform-quota-history-v1.sqlite`，未安装时自动隐藏不影响原功能）；
+> 3. **安全合并更新器（`auto-update.mjs`）**：跟踪上游更新时自动检测上游是否已原生支持 `zhTitle`，否则安全合并桥接并在锚点失效时自动中止覆盖以防功能丢失。
+>
+> 如需开启 `zhTitle`，请在 `user/config.json` 中设置 `"zhTitle": { "enabled": true, "apiFormat": "openai", "apiBaseUrl": "...", "apiKey": "...", "primaryModel": "gpt-4o-mini" }`（也支持环境变量 `AG_ZH_TITLE_API_KEY` / `OPENAI_API_KEY`）。
 
 [![Version](https://img.shields.io/badge/version-6.0.0-3D6470.svg)](https://github.com/Anarcadia/chuanban-antigravity-theme-patch)
 [![Antigravity](https://img.shields.io/badge/Antigravity-2.34.0%2B-3F6E7A.svg)](https://github.com/Anarcadia/chuanban-antigravity-theme-patch)
